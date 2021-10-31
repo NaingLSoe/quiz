@@ -1,0 +1,42 @@
+.main-box{
+    margin-top: 50px;
+}
+
+#exams {
+    margin-bottom: 20px;
+}
+
+#exams > .form-check, #answers > .form-check {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#exams > .form-check {
+    font-size: 1.25em;
+    border-bottom: 1px dotted #dddddd;
+}
+
+.exam-title {
+    display: table-cell; 
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.quiz-desc {
+    font-size: 1em;
+}
+
+.correct-ans {
+    background-color: aquamarine;
+}
+
+#reason {
+    padding-top: 20px;
+}
+
+h3.center {
+    text-align: center;
+    padding-top: 50px ;
+    padding-bottom: 50px;
+}

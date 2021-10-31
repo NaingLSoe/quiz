@@ -1,0 +1,103 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> Test Your Knowledge </title>
+
+    <link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+
+    <link rel="icon" type="image/ico" href="fav.ico">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="main-box"></div>
+        <div class="row">
+            <div class="col exam-title">
+                <h3 id="title">Exam 0</h3> 
+            </div>
+        </div>
+        
+        <div class="card" id = "quiz-canvas">
+            <div class="card-header">
+              <label id="quiz-no">Question 0</label> <span id="status" class="badge"></span>
+            </div>
+            <div class="card-body">
+
+                <div class="alert alert-danger" role="alert" id="alert">
+                    Please select an answer.
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="quiz-desc" id="question"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="" id="answers"></div>
+                    </div>
+                </div>
+
+                <div class="row" id="reason">
+                    <div class="col">
+                        <b>Explanation:</b><br/>
+                        <small class="" id="reason-text"></small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-footer" id="next">
+                <div class="row" >
+                    <div class="col">
+                        <div class="d-grid gap-2 col-2 mx-auto">
+                            <button id="btn-next" class="btn btn-primary" type="button" disabled>Next</button>
+                            <button class="btn btn-warning go-home">Go Home</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card" id="quiz-result">
+            <div class="card-body">
+
+                <h3 class="center text-warning" id="result">0 of 0 are correct.</h3>
+
+            </div>
+            <div class="card-footer">
+                <div class="row" >
+                    <div class="col">
+                        <div class="d-grid gap-2 col-4 mx-auto">
+                            <button id="btn-view" class="btn btn-success">View Answer and Explanation</button>
+                            <button class="btn btn-warning go-home">Go Home</button>
+                        </div>
+                    </div>                
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer></footer>
+
+
+    <script src="js/lib/jquery/dist/jquery.min.js">  </script>
+    <script src="js/lib/bootstrap/dist/js/bootstrap.min.js"> </script>
+    <script src="data/data.js"></script>
+    <script src="data/quiz-1.js"></script>
+    <script src="data/quiz-2.js"></script>
+    <script src="js/site.js"></script> 
+    <script src="js/pages/quiz.js"></script>
+
+</body>
+
+</html>
