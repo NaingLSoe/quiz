@@ -17,16 +17,16 @@ $(function () {
     var qparams = new URLSearchParams(window.location.search);
 
     if (qparams.has('id') == false){
-        window.location.href = "index.html?e=404";
+        window.location.href = "../index.html?e=404";
     }else{
         exam_id = parseInt(qparams.get("id"));
     }
 
     if (exam_id < 0){
-        window.location.href = "index.html?e=412";
+        window.location.href = "../index.html?e=412";
     }
 
-    const _data_source = 'data/quiz-' + exam_id.toString() + '.js';
+    const _data_source = '../data/quiz-' + exam_id.toString() + '.js';
 
     require(_data_source, function () {
         console.log("Data source has been loaded.");

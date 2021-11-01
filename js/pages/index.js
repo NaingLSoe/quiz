@@ -55,7 +55,7 @@ $(function () {
       return;
     }
 
-     const _exam_url = "quiz.html?id=" + _selected_id;
+     const _exam_url = "pages/quiz.html?id=" + _selected_id;
 
      window.location.href = _exam_url;
 

@@ -1,5 +1,5 @@
 body {
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
 }
 
 body, input, p, h, label, span, div {
@@ -12,6 +12,10 @@ body, input, p, h, label, span, div {
 }
 .navbar-light .navbar-nav .nav-link {
     color: #022837;
+}
+
+.navbar-light .navbar-nav .nav-item.active .nav-link {
+    color: #fd7e14;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -65,11 +69,12 @@ body, input, p, h, label, span, div {
 
 .bd-callout {
     padding: 1.25rem;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border: 1px solid #e9ecef;
     border-left-width: 0.25rem;
     border-radius: 0.25rem;
+    background-color: #ffffff;
 }
 
 .bd-callout-info {
@@ -82,7 +87,7 @@ body, input, p, h, label, span, div {
 }
 
 .main-box{
-    margin-top: 20px;
+    margin-top: 1em;
 }
 
 .exam-options {
@@ -127,7 +132,7 @@ body, input, p, h, label, span, div {
     display: table-cell; 
     vertical-align: middle;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 1em;
 }
 
 .exam-title small {
@@ -161,4 +166,37 @@ button.exit-quiz, button.ans-back-next {
 .footer {
     color: white;
     text-align: center;
-  }
+}
+
+.help .quiz-help h1, 
+.help .quiz-help h2,
+.help .quiz-help h3, 
+.help .quiz-help h4,
+.help .quiz-help h5{
+    color: #04648a;
+    font-weight: 700;
+}
+
+.help .quiz-help .help-context {
+    padding: 1em 1em;
+}
+
+.help .lines {
+    margin: auto;
+    width: 70px;
+    position: relative;
+    border-top: 5px solid #fd7e14;
+    background-color: transparent;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    opacity: .5;
+}
+
+
+.help .help-context code {
+    font-size: 1em;
+}
+
+.help .help-context ul li {
+    padding-top: 0.5em;
+}

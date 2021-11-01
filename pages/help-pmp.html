@@ -1,0 +1,254 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> Quiz | PMP </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Saira+Condensed:wght@600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="icon" type="image/ico" href="../fav.ico">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Test Your Knowledge</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main-quiz" 
+            aria-controls="navbar-main-quiz" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-main-quiz">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="../index.html">Home</a>
+                </li>
+                <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-main-help" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Help
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbar-main-help">
+                      <a class="dropdown-item" href="help-pmp.html">PMP : Formulas</a>
+                    </div>
+                  </li>
+              </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container help">
+
+        <div class="main-box"></div>
+
+        <div class="row">
+            <div class="col exam-title">
+                <h3 id="title"> PMP : Formulas </h3> 
+                <hr class="lines" />
+            </div>
+        </div>
+
+        <div class="quiz-help pt-3">
+            <h4>Communication Channels</h4>
+
+            <div class="help-context">
+                <p>
+                    <code>Communication Channels = N ( N -1 ) /  2</code>
+                </p>
+                <p>Where, <code>N</code> = number of people</p>
+
+                <div class="pt-3 ps-3" >
+                    <strong>Example:</strong>
+                    <small>
+                        You are the project manager in an organization and you have a team of 5 people working
+                        with you. How many Communication Channels are there ?
+                    </small>
+                    <br/>
+                    <small>
+                        Answer:
+                        <ul class="list-unstyled">
+                            <li>No. of team members = 5</li>
+                            <li>Project Manager = 1</li>
+                            <li>No. of people involved in the project overall = (5 + 1) = 6</li>
+                            <li>Hence, N = 6</li>
+                            <li></li>
+                            <li>No. of Channels = N ( N - 1) / 2</li>
+                            <li>&nbsp; = 6 ( 6 - 1) / 2</li>
+                            <li>&nbsp; = 30 / 2</li>
+                            <li>&nbsp; = 15</li>
+                        </ul>
+                    </small>
+                </div>
+
+                <hr class="lines" />
+
+            </div>
+
+        <div class="quiz-help pt-3">
+            <h4>Cost Calculations</h4>
+
+            <div class="help-context">
+                <p>
+                    Life Cycle Costing of a Product =  Production Cost + Overall Maintenance Cost
+                </p>
+                <ul class="list-unstyled">
+                    <li>P = Pessimistic Cost (Worst case scenario)</li>
+                    <li>O = Optimistic Cost (Ideal case scenario)</li>
+                    <li>M = Most Likely Cost (Most likely scenario)</li>
+                </ul>
+
+                <div class="pt-3">
+                    <h5>Three Point Estimate</h5>
+                    <ul>
+                        <li>Simple Average / Triangular Distribution  = <code> ( P + M + O ) / 3 </code></li>
+                        <li>Weighted Average /  Beta Distribution /  PERT = <code> ( P + 4M + O ) / 6 </code></li>
+                        <li>Standard Deviation =  <code> ( P - O ) / 6 </code></li>
+                    </ul>
+                </div>
+    
+                <div class="pt-3">
+                    <h5>Accuracy of Estimates (from actual value)</h5>
+                    <ul>
+                        <li>(Initiating) Rough Order of Magnitude (ROM) = <code> -25%  to + 75%   </code></li>
+                        <li>(Planning) Budget Estimate =  <code>  -10%  to +25% </code></li>
+                        <li>(Progress / Clearer) Definitive Estimate = <code> +/- 10%  </code> OR <code> -5% to +10% </code></li>
+                    </ul>
+                </div>
+
+                <hr class="lines" />
+
+            </div>
+
+
+            <div class="quiz-help pt-3">
+                <h4>Earned Value Management</h4>
+    
+                <div class="help-context">
+                    <ul class="list-unstyled">
+                        <li>AC = Actual Cost; incurred till now for the work done till now</li>
+                        <li>EV = Earned Value; value of work done till now</li>
+                        <li>PV = Planned Value; planned cost of work as of today</li>
+                        <li>BAC = Budget at Completion</li>
+                    </ul>
+    
+                    <div class="pt-3">
+                        <h5>Cost Variance (CV)</h5>
+                        <div class="p-3">
+                            <p>CV is the comparison of work done till now vs actual cost of work done till now.</p>
+                            <p><code> CV = EV - AC </code></li></p>
+                            <p>If:</p>                
+                            <ul>
+                                <li><code>- CV </code>= Project is over budget</li>
+                                <li><code>+ CV </code>= Project is under budget</li>
+                                <li><code>0 CV </code>= Project is on budget</li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="pt-3">
+                        <h5>Cost Performance Index (CPI)</h5>
+                        <div class="p-3">
+                            <p>CPI is the checking whether within budget or over budget.</p>
+                            <p><code> CPI = EV / AC </code></li></p>
+                            <p>If:</p>                
+                            <ul>
+                                <li><code>CPI > 1 </code>= good situation</li>
+                                <li><code>CPI < 1 </code>= bad situation</li>
+                            </ul>
+                            <p><small>E.g. CIP = 0.90 means getting 90 cents for every 1$ invested.</small></p>
+                        </div>
+                    </div>
+    
+                    <div class="pt-3">
+                        <h5>Schedule Variance (SV)</h5>
+                        <div class="p-3">
+                            <p>SV is the comparison of actual work done till now vs planned value of work supposed to be done till now.</p>
+                            <p><code> SV =  EV - PV  </code></li></p>
+                            <p>If:</p>                
+                            <ul>
+                                <li><code>- SV  </code>= project is behind schedule</li>
+                                <li><code>+ SV </code>= project is ahead of schedule</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pt-3">
+                        <h5>Schedule Performance Index (SPI)</h5>
+                        <div class="p-3">
+                            <p>SPI is the checking of on schedule or behind schedule.</p>
+                            <p><code> SPI =  EV / PV  </code></li></p>
+                            <p>If:</p>                
+                            <ul>
+                                <li><code> SPI > 1  </code>= good situation; work done is faster rate than planned</li>
+                                <li><code>SPI < 1 </code>= bad situation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pt-3">
+                        <h5>Estimate at Completion (EAC)</h5>
+                        <div class="p-3">
+                            <p>EAC is the total cost of project based on current performance.</p>
+                            <p><code> EAC = BAC / CPI  </code></li></p>
+                            <p><code> EAC = AC + ( BAC - EV )   </code></li></p>
+                            <p><code> EAC = AC + ( Bottom up Estimate to Complete )  </code></li></p>
+                            <p><code> EAC = AC + ( BAC - EV ) / CPI * SPI   </code></li></p>
+                        </div>
+                    </div>
+
+                    <div class="pt-3">
+                        <h5>Estimate to Complete (ETC)</h5>
+                        <div class="p-3">
+                            <p>ETC is how much more will the project cost (money $$).</p>
+                            <p><code> ETC = EAC - AC  </code></li></p>
+                        </div>
+                    </div>
+
+                    <div class="pt-3">
+                        <h5>To Complete Performance Index (TCPI)</h5>
+                        <div class="p-3">
+                            <p>TCPI is the level of cost performance (in future) required to complete the project within the budget.</p>
+                            <p><code> TCPI =  ( BAC - EV ) / ( BAC - AC )  </code></li></p>
+                            <p>If:</p>                
+                            <ul>
+                                <li><code>TCPI > 1  </code>= good situation</li>
+                                <li><code>TCPI < 1 </code>= bad situation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pt-3">
+                        <h5>Variance at Completion (VAC)</h5>
+                        <div class="p-3">
+                            <p>VAC is how much over or under budget at the end of project.</p>
+                            <p><code> VAC = BAC - EAC  </code></li></p>
+                        </div>
+                    </div>
+
+                    <hr class="lines" />
+                    
+                </div>
+
+
+        </div>
+
+    </div>
+
+    <footer class="footer mt-auto">
+        <div class="p-3">
+        </div>
+      </footer>
+
+    <script src="../js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../js/site.js"></script> 
+
+</body>
+
+</html>

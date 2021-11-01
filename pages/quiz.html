@@ -4,35 +4,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> Test Your Knowledge </title>
+    <title> Quiz | Test </title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Saira+Condensed:wght@600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="js/lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/site.css" />
 
-    <link rel="icon" type="image/ico" href="fav.ico">
+    <link rel="icon" type="image/ico" href="../fav.ico">
 </head>
 
 <body>
 
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-              <a class="navbar-brand" href="#">Test Your Knowledge</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                </div>
-              </div>
-            </div>
-          </nav>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Test Your Knowledge</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main-quiz" 
+            aria-controls="navbar-main-quiz" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-main-quiz">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="../index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-main-help" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Help
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbar-main-help">
+                      <a class="dropdown-item" href="help-pmp.html">PMP : Formulas</a>
+                    </div>
+                  </li>
+              </ul>
+          </div>
+        </div>
+    </nav>
 
     <div class="container">
 
@@ -145,11 +154,11 @@
         </div>
       </footer>
 
-    <script src="js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/lib/jquery/dist/jquery.min.js"></script>
-    <script src="data/data.js"></script>   
-    <script src="js/site.js"></script> 
-    <script src="js/pages/quiz.js"></script>
+    <script src="../js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../data/data.js"></script>   
+    <script src="../js/site.js"></script> 
+    <script src="../js/pages/quiz.js"></script>
 
 </body>
 
