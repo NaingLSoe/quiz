@@ -36,6 +36,7 @@ $(function () {
     function load_quiz(id, show_ans, user_ans){
 
         _selected_id = 0;
+        $("#btn-next").prop('disabled', true);
 
         const _quiz = questions[id];
 
@@ -98,7 +99,7 @@ $(function () {
                 $("#status").removeClass().addClass("badge bg-danger").text("Wrong").show();
             }
 
-            $("#btn-next").prop('disabled', false);
+            $("#btn-next").prop('disabled', true).hide();
         }
 
     }
