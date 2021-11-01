@@ -22,15 +22,16 @@ $(function () {
 
   const opt_quiz = "<div class='form-check'><input class='form-check-input opt-quiz' type='radio' data-id='@@did@@' name='opt-quiz' id='@@id@@'>"
                  + "<label class='form-check-label' for='@@id@@'>"
-                 + "@@name@@</label></div>";
+                 + "@@name@@</label> <small>@@desc@@</small> </div>";
   var quiz = [];
 
-  $.each(DATA, function(key,value){
+  $.each(EXAMS, function(key,value){
     var did = value["id"];
     var id = "quiz-" + did;
-    var name = value["name"];
+    var name = "E" +  format4d(did) + " : " +  value["name"];
+    var desc = value["description"];
 
-    quiz.push( opt_quiz.replace(/@@did@@/gi, did).replace(/@@id@@/gi, id).replace(/@@name@@/gi, name) );
+    quiz.push( opt_quiz.replace(/@@did@@/gi, did).replace(/@@id@@/gi, id).replace(/@@name@@/gi, name).replace(/@@desc@@/gi, desc) );
 
   });
 

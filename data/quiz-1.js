@@ -1,7 +1,8 @@
 DATA.push( 
     {
         "id": 1,
-        "name": "PMP Sample Quiz - 1",
+        "name": "PMP Sample Questions",
+        "description" : "10 questions",
         "questions": [
             {
                 "id": 1,

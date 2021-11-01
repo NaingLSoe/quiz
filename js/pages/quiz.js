@@ -1,10 +1,10 @@
 $(function () {
-  
+
     $("#alert").hide();
     $("#reason").hide();
     $("#status").hide();
     $("#quiz-result").hide();
-    $(".go-home").hide();
+    $("#next-back").hide();
 
     var exam_id = -1;
     var current_quiz = 0;
@@ -26,18 +26,12 @@ $(function () {
         window.location.href = "index.html?e=412";
     }
 
-    $.each(DATA, function(key, quiz){
-    
-        if (quiz["id"] == exam_id) {
-            questions = quiz["questions"];
-            $("#title").text(quiz["name"]);
-        }
+    const _data_source = 'data/quiz-' + exam_id.toString() + '.js';
+
+    require(_data_source, function () {
+        console.log("Data source has been loaded.");
+        init();
     });
-
-    if (questions.length < 0) {
-        window.location.href = "index.html?e=404";
-    }
-
 
     function load_quiz(id, show_ans, user_ans){
 
@@ -45,17 +39,17 @@ $(function () {
 
         const _quiz = questions[id];
 
-        const _qdesc = _quiz["quiz"];
+        const _qtext = _quiz["quiz"];
         const _qchoices = _quiz["choices"];
 
         $("#quiz-no").text("Question " + (id + 1).toString() + " of " + questions.length.toString());
-        $("#question").text(_qdesc);
+        $("#question").text(_qtext);
 
         var _choices = [];
 
         $.each(_qchoices, function(k,v){
             const opt_ans = "<div class='form-check @@show@@'>"
-            + "<input class='form-check-input opt-ans' @@checked@@  type='radio' data-id='@@did@@' name='opt-ans' id='@@id@@'>"
+            + "<input class='form-check-input opt-ans' @@checked@@ @@disabled@@ type='radio' data-id='@@did@@' name='opt-ans' id='@@id@@'>"
             + "<label class='form-check-label' for='@@id@@'>"
             + "@@name@@</label></div>";
 
@@ -69,7 +63,17 @@ $(function () {
                 _checked = "checked";
             }
 
-            _choices.push( opt_ans.replace(/@@did@@/gi, k+1 ).replace(/@@id@@/gi, k+1 ).replace(/@@name@@/gi, v).replace(/@@show@@/gi, _show).replace(/@@checked@@/gi, _checked) );
+            var _disabled = "";
+            if(show_ans){
+                _disabled = "disabled";
+            }
+
+            _choices.push( opt_ans.replace(/@@did@@/gi, k+1 )
+                .replace(/@@id@@/gi, k+1 )
+                .replace(/@@name@@/gi, v)
+                .replace(/@@show@@/gi, _show)
+                .replace(/@@checked@@/gi, _checked)
+                .replace(/@@disabled@@/gi, _disabled) );
 
         });
 
@@ -77,28 +81,28 @@ $(function () {
         $("#answers").append(_choices);
 
         if (show_ans){
-            $("#reason-text").text(_quiz["reason"]);
-            $("#reason").show();
+
+            var _reason = _quiz["reason"];
+            _reason = _reason.trim();
+
+            if (_reason != "") {
+                $("#reason-text").text(_reason);
+                $("#reason").show();
+            }else{
+                $("#reason").hide();
+            }
 
             if (user_ans["correct"] == 1){
                 $("#status").removeClass().addClass("badge bg-success").text("Correct").show();
             }else{
                 $("#status").removeClass().addClass("badge bg-danger").text("Wrong").show();
             }
+
+            $("#btn-next").prop('disabled', false);
         }
 
     }
   
-    load_quiz(current_quiz, false);
-  
-    $(document).on("click", "input.opt-ans" , function(e) {
-        _selected_id = $(this).data("id");
-
-        $("#alert").hide();
-        $("#btn-next").prop('disabled', false);
-    });
-
-
     function show_result(){
 
         current_quiz = 0;
@@ -116,32 +120,55 @@ $(function () {
         $("#result").text( count.toString() + " of " + _total.toString() + " are correct." );
         $("#quiz-result").show();
 
-        $(".go-home").show();
+        $("#btn-exit").hide();
+        $("#btn-next").hide();
+        $("#next-back").show();
     }
 
     function set_user_ans(id, uid){
+        console.log(current_answers);
         const _quiz = questions[id];
+        current_answers[id].ans = uid;
         if (_quiz["ans"] == uid){
-            current_answers.push({"id": id, "ans": uid, "correct": 1 });
-        }else{
-            current_answers.push({"id": id, "ans": uid, "correct": 0 });
+            current_answers[id].correct = 1;
         }
     }
 
+    function init() {
+        $.each(DATA, function(key, quiz){
+    
+            if (quiz["id"] == exam_id) {
+                questions = quiz["questions"];
+
+                questions.sort(() => Math.random() - 0.5);
+                
+                $("#title").text(quiz["name"]);
+                $("#description").text(quiz["description"]);
+            }
+        });
+    
+        if (questions.length < 0) {
+            window.location.href = "index.html?e=404";
+        }
+
+        //preset all user answers as wrong.
+        $.each(questions, function(k,v){
+            current_answers.push({"id": v["id"], "ans": 0, "correct": 0 });
+        });
+    
+        load_quiz(current_quiz, false);
+    }
+
+    $(document).on("click", "input.opt-ans" , function(e) {
+        _selected_id = $(this).data("id");
+
+        $("#alert").hide();
+        $("#btn-next").prop('disabled', false);
+    });
 
     $("#btn-next").on('click', function(e){
 
-        if (show_answer_mode){
-            
-            current_quiz = current_quiz + 1;
-            if (current_quiz < questions.length){
-                load_quiz(current_quiz, true, current_answers[current_quiz]);
-                if (current_quiz == questions.length - 1){
-                    $("#btn-next").prop('disabled', true);
-                }
-            }
-            
-        }else{
+        if (show_answer_mode == false){
             if (_selected_id < 1){
                 $("#alert").show();
                 return;
@@ -162,14 +189,41 @@ $(function () {
     $("#btn-view").on('click', function(e){
         show_answer_mode = true;
         $("#quiz-result").hide();
+        $("#btn-exit").hide();
         $("#quiz-canvas").show();
-        current_quiz = 0;
+        current_quiz = 0;        
         load_quiz(current_quiz, true, current_answers[current_quiz]);
     });
 
-    $(".go-home").on('click', function(e){
-        window.location.href = "index.html"
+    $("#btn-proceed").on("click", function(e){
+
+        var myModalEl = document.getElementById('exitModal');
+        var myModal = bootstrap.Modal.getInstance(myModalEl);
+        myModal.hide();
+
+        show_result();
     });
 
+    $("#btn-ans-next").on("click", function(e){
+        if(show_answer_mode){
+            current_quiz = current_quiz + 1;
+            if (current_quiz < questions.length){
+                load_quiz(current_quiz, true, current_answers[current_quiz]);
+            }else{
+                current_quiz = questions.length -1;
+            }
+        }
+    });
+
+    $("#btn-ans-back").on("click", function(e){
+        if(show_answer_mode){
+            current_quiz = current_quiz -1;
+            if (current_quiz > -1){
+                load_quiz(current_quiz, true, current_answers[current_quiz]);
+            }else{
+                current_quiz = 0;
+            }
+        }
+    });
 
 });
