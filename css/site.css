@@ -27,7 +27,9 @@ body, input, p, h, label, span, div {
 .quiz-canvas .card-header > label, 
 .main-box .card-header,
 .quiz-result .card-header,
-.user-result {
+.user-result,
+.help .help-box .card-header,
+.help .accordion-button {
     font-family: 'Saira Condensed',  "Helvetica Neue", Arial, sans-serif; 
     color: #04648a;
 }
@@ -36,8 +38,12 @@ body, input, p, h, label, span, div {
     color: #04648a;
 }
 
-.quiz-canvas .card-header > label, .main-box .card-header, .quiz-result .card-header {
-    font-size: 18px;
+.quiz-canvas .card-header > label, 
+.main-box .card-header, 
+.quiz-result .card-header,
+.help .help-box .card-header,
+.help .accordion-button {
+    font-size: 1.2rem;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
@@ -199,4 +205,13 @@ button.exit-quiz, button.ans-back-next {
 
 .help .help-context ul li {
     padding-top: 0.5em;
+}
+
+.help .help-box .alert small {
+    font-size: 0.75rem;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(0,0,0,.03);
+    box-shadow: none;
 }
