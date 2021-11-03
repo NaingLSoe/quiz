@@ -87,6 +87,12 @@ body, input, p, h, label, span, div {
     border-left-color: #5bc0de;
 }
 
+/* Rules for sizing the icon. */
+.material-icons.md-18, .material-icons-outlined.md-18 { font-size: 18px; }
+.material-icons.md-24, .material-icons-outlined.md-24 { font-size: 24px; }
+.material-icons.md-36, .material-icons-outlined.md-36 { font-size: 36px; }
+.material-icons.md-48, .material-icons-outlined.md-48 { font-size: 48px; }
+
 .quiz-canvas .card-body , .quiz-canvas .card-header {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -214,4 +220,13 @@ button.exit-quiz, button.ans-back-next {
 .accordion-button:not(.collapsed) {
     background-color: rgba(0,0,0,.03);
     box-shadow: none;
+}
+
+
+.help .btn .material-icons-outlined {
+    font-size: .875rem;
+}
+
+.exam-options .form-check .material-icons-outlined {
+    font-size: 1em;    
 }

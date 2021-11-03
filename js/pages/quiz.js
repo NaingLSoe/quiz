@@ -26,10 +26,23 @@ $(function () {
         window.location.href = "../index.html?e=412";
     }
 
-    const _data_source = '../data/quiz-' + exam_id.toString() + '.js';
+    let _source_file = "";
+
+    $.each(EXAMS, function(k,v){
+        if (v["id"] == exam_id){
+            _source_file = v["source"];
+            return true;
+        }
+    });
+
+    if (_source_file == ""){
+        window.location.href = "../index.html?e=505";
+    }
+
+
+    const _data_source = '../data/' + _source_file;
 
     require(_data_source, function () {
-        console.log("Data source has been loaded.");
         init();
     });
 
@@ -45,6 +58,20 @@ $(function () {
 
         $("#quiz-no").text("Question " + (id + 1).toString() + " of " + questions.length.toString());
         $("#question").text(_qtext);
+
+        $("#extra-items-canvas").empty();
+        $("#extra-items").show();
+        if (_quiz.hasOwnProperty('extra')) {
+           const _extra = _quiz["extra"];
+           let _items = "";
+           if (_extra){
+               $.each(_extra, function(k, item){
+                   _items += item;
+               });
+               $("#extra-items-canvas").append(_items);
+               $("#extra-items").show();
+           }
+        }
 
         var _choices = [];
 
@@ -143,7 +170,7 @@ $(function () {
 
                 questions.sort(() => Math.random() - 0.5);
                 
-                $("#title").text(quiz["name"]);
+                $("#title").text("E" +  format4d(exam_id) + " : " +  quiz["name"]);
                 $("#description").text(quiz["description"]);
             }
         });

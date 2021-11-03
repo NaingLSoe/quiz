@@ -1,11 +1,8 @@
 $(function() {
     
-    /*
-    $(".accordion-button").on("click", function(e){
-        const _target_id = $(this).data("bs-target");
-        localStorage.setItem("pmp-guide1-last-read",_target_id);
-    });
-    */
+    const auth_api = new $.napi();
+    auth_api.init();
+    let user_auth_key = null;
 
     $(document).on("click", "button.accordion-button" , function(e) {
         const _target_id = $(this).data("bs-target");
@@ -17,12 +14,21 @@ $(function() {
         var n = $("#uxn-605").val();
         var p = $("#prx-243").val();
         var rm = $("#chx-439").is(":checked");
-        if(n){n=n.trim();}if(p){p=p.trim();}
-        if(n == ""){$("#erx-105").text("Please enter name and password.");$("#alt-206").show()}
-        if(p == ""){$("#erx-105").text("Please enter name and password.");$("#alt-206").show()}
-        $("#uxn-605").val("");$("#prx-243").val("");
-        const req = connect(n,p,rm, connected);
+        user_auth_key = auth_api.signin(n,p, auth_callback);
+        if (user_auth_key && rm){ auth_api.remember(user_auth_key)};
     });
+
+    $("#btn-locked").on("click", function(e){
+        auth_api.signout(user_auth_key);
+    });
+
+    function auth_callback(r){
+        if (r == 200) {init(); return true;}
+        if (r == 403){$("#erx-105").text("Access has been forbidden. Wait awhile and retry.");}
+        else{$("#erx-105").text("Name or Password is wrong.");}        
+        $("#alt-206").show();
+        return false;  
+    }
 
     const _notes = $("#notes");
     $("#note-contents").empty();
@@ -46,15 +52,6 @@ $(function() {
         });
 
     }
-
-    function connected(r){
-        if (r == 200) {init(); return true;}
-        if (r == 403){$("#erx-105").text("Access has been forbidden. Wait for 10 minutes.");}
-        else{$("#erx-105").text("Name or Password is wrong.");}        
-        $("#alt-206").show();
-        return false;  
-    }
-
 
 });
 

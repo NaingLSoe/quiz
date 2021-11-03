@@ -21,8 +21,9 @@ $(function () {
 
 
   const opt_quiz = "<div class='form-check'><input class='form-check-input opt-quiz' type='radio' data-id='@@did@@' name='opt-quiz' id='@@id@@'>"
-                 + "<label class='form-check-label' for='@@id@@'>"
-                 + "@@name@@</label> <small>@@desc@@</small> </div>";
+                 + "<label class='form-check-label' for='@@id@@'>@@name@@ @@priority@@</label>" 
+                 + "<small>@@desc@@</small>"
+                 + "</div>";
   var quiz = [];
 
   $.each(EXAMS, function(key,value){
@@ -31,7 +32,16 @@ $(function () {
     var name = "E" +  format4d(did) + " : " +  value["name"];
     var desc = value["description"];
 
-    quiz.push( opt_quiz.replace(/@@did@@/gi, did).replace(/@@id@@/gi, id).replace(/@@name@@/gi, name).replace(/@@desc@@/gi, desc) );
+    var priority = "";
+    if (value["priority"] == "h"){
+      priority = "<span class='material-icons-outlined text-warning' title='Hot topic'>circle_notifications</span>";
+    }
+
+    quiz.push( opt_quiz.replace(/@@did@@/gi, did)
+                      .replace(/@@id@@/gi, id)
+                      .replace(/@@name@@/gi, name)
+                      .replace(/@@desc@@/gi, desc)
+                      .replace(/@@priority@@/gi, priority) );
 
   });
 
