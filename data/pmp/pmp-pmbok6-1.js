@@ -1,8 +1,8 @@
 DATA.push(
     {
-        "id": 15,
-        "name": "PMP PMBOK 6 Wrap Up",
-        "description" : "Sample questions that wrap up the PMBOK 6.",
+        "id": 20,
+        "name": "PMP PMBOK 6 - Sample Quiz 1",
+        "description" : "Sample questions for Project Introduction, Integration, Scope Management and Schedule Management.",
         "questions": [
             {
                 "id": 1,

@@ -51,40 +51,51 @@
 
     <div class="container">
 
-        <div class="alert alert-danger alert-dismissible" role="alert" id="page-error" >
+        <div class="alert alert-danger alert-dismissible" role="alert" id="page-error" style="display: none;" >
             <p id="error-text"></p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <div class="card main-box">
-            <div class="card-header">
-              Please select one ..
+        <div class="row justify-content-center no-options" id="no-options" style="display: none;" >
+          <div class="col col-lg-6 col-md-10">
+            <div class="info-box bg-white">
+              <span class="info-box-icon bg-danger width-100"><span class="material-icons-outlined text-white md-36">error_outline</span></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">
+                  <h1 class="text-danger" >Sorry ..</h1>
+                </span>
+                <span class="info-box-number">
+                  No tests are uploaded yet. Sorry for the inconvenience caused.
+                  <br/>
+                  Please come back later.
+                </span>
+              </div>
+
             </div>
-            <div class="card-body">
 
-                <div class="alert alert-danger" role="alert" id="alert">
-                    Please select an Exam first.
-                </div>
+          </div>
+        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <div class="exam-options" id="exams">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="d-grid gap-2 col-4 mx-auto">
-                            <button id="start" class="btn btn-primary" type="button" disabled>Start</button>
-                        </div>
-                    </div>
-                </div>
-
-
+        <div class="row justify-content-center main-box" id="test-main" style="display: none;">
+          <div class="col col-lg-8 col-md-8">
+            <div class="exam-options" id="test-items">
             </div>
           </div>
+        </div>
+
+        <div class="row justify-content-center main-box" id="main-box" style="display: none;" >
+          <div class="col col-lg-8 col-md-8">
+
+            <div class="alert alert-danger" role="alert" id="alert" style="display: none;">
+              Please select a test first.
+            </div>
+
+            <div class="exam-options" id="exams">
+            </div>
+
+          </div>
+        </div>
 
     </div>
 

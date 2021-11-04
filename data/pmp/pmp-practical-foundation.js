@@ -138,7 +138,7 @@ DATA.push(
             },
             {
                 "id": 12,
-                "quiz": "13.	You have delegated the task of identifying which quality standards are relevant to your current project to Sally, who is an experienced team member whom you have worked with on prior projects. You've also asked Sally to determine how to satisfy any identified quality standards. In which of the following activities is Sally engaged?",
+                "quiz": "You have delegated the task of identifying which quality standards are relevant to your current project to Sally, who is an experienced team member whom you have worked with on prior projects. You've also asked Sally to determine how to satisfy any identified quality standards. In which of the following activities is Sally engaged?",
                 "choices": [
                     "A.	Control Quality",
                     "B.	Manage Quality",

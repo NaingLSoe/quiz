@@ -106,6 +106,10 @@ body, input, p, h, label, span, div {
     margin-bottom: 20px;
 }
 
+.no-options {
+    margin-top: 5em;
+}
+
 .exam-options > .form-check, #answers > .form-check {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -165,7 +169,8 @@ body, input, p, h, label, span, div {
     padding-top: 20px;
 }
 
-h3.center {
+.quiz-result h3.center,
+.quiz-result h2.center {
     text-align: center;
     padding-top: 50px ;
     padding-bottom: 50px;
@@ -229,4 +234,113 @@ button.exit-quiz, button.ans-back-next {
 
 .exam-options .form-check .material-icons-outlined {
     font-size: 1em;    
+}
+
+
+.info-box {
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    border-radius: 0.25rem;
+    background-color: #fff;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 1rem;
+    min-height: 80px;
+    padding: 0.5rem;
+    position: relative;
+    width: 100%;
+}
+
+.info-box .info-box-icon {
+    border-radius: 0.25rem;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 1.875rem;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    width: 70px;
+}
+
+.info-box .info-box-content {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1.8;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 0 10px;
+}
+
+.info-box .info-box-text, .info-box .progress-description {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+}
+
+.info-box .info-box-number {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+}
+
+.width-50 {width: 50px !important;}
+.width-70 {width: 70px !important;}
+.width-100 {width: 100px !important;}
+.width-120 {width: 120px !important;}
+.width-150 {width: 150px !important;}
+.width-200 {width: 200px !important;}
+
+.exam-options a.opt-test, .exam-options a.opt-test:active, .exam-options a.opt-test:focus,
+.exam-options a.opt-quiz, .exam-options a.opt-quiz:active, .exam-options a.opt-quiz:focus {
+    text-decoration: none;
+}
+
+.exam-options .opt-test:hover, .exam-options .opt-test .info-box:hover,
+.exam-options .opt-quiz:hover, .exam-options .opt-quiz .info-box:hover {
+    background-color: #e6f0f3 ;
+}
+
+.exam-options .info-box .info-box-icon .material-icons-outlined {
+    color: #FFFFFF;
+}
+
+.exam-options .opt-quiz .info-box .info-box-icon .material-icons-outlined,
+.exam-options .opt-test .info-box .info-box-icon .material-icons-outlined {
+    color: #FFFFFF;
+    font-size: 1.875rem;
+}
+
+.bg-high-priority {
+    background-color: #ffecb5;
+}
+
+a.opt-test.disabled  .info-box-text, 
+a.opt-test.disabled:hover,
+a.opt-test.disabled .info-box-number,
+a.opt-quiz.disabled  .info-box-text, 
+a.opt-quiz.disabled:hover,
+a.opt-quiz.disabled .info-box-number {
+    color: #CCCCCC;
+    background-color: #FFFFFF;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: .65;
+}
+a.opt-test.disabled .info-box-icon,
+a.opt-quiz.disabled .info-box-icon {
+    background-color: #CCCCCC !important;
 }

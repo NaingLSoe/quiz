@@ -9,10 +9,10 @@ $(function () {
     var exam_id = -1;
     var current_quiz = 0;
     var _selected_id = 0;
+    var test_id = 0;
     var questions = [];
     var current_answers = [];
     var show_answer_mode = false;
-    var back_home = false;
 
     var qparams = new URLSearchParams(window.location.search);
 
@@ -26,24 +26,31 @@ $(function () {
         window.location.href = "../index.html?e=412";
     }
 
-    let _source_file = "";
+    if (qparams.has('t') == false){
+        window.location.href = "../index.html?e=404";
+    }else{
+        test_id = parseInt(qparams.get("t"));
+    }
+
+    let _source = "";
+    let _data_source = "";
 
     $.each(EXAMS, function(k,v){
-        if (v["id"] == exam_id){
-            _source_file = v["source"];
+        if (v["id"] == test_id){
+            _source = v["source"];
             return true;
         }
     });
 
-    if (_source_file == ""){
-        window.location.href = "../index.html?e=505";
+    if (_source == ""){
+        alert(EXAMS);
+        window.location.href = "../index.html?e=400";
     }
 
-
-    const _data_source = '../data/' + _source_file;
+    _data_source = '../' + _source + "/source.js";
 
     require(_data_source, function () {
-        init();
+        load_source();
     });
 
     function load_quiz(id, show_ans, user_ans){
@@ -127,6 +134,15 @@ $(function () {
             }
 
             $("#btn-next").prop('disabled', true).hide();
+
+            $("#btn-ans-back").prop("disabled", false);
+            $("#btn-ans-next").prop("disabled", false);
+            if (id == 0 ){
+                $("#btn-ans-back").prop("disabled", true);
+            }
+            if (id == questions.length -1){
+                $("#btn-ans-next").prop("disabled", true);
+            }
         }
 
     }
@@ -159,6 +175,21 @@ $(function () {
         current_answers[id].ans = uid;
         if (_quiz["ans"] == uid){
             current_answers[id].correct = 1;
+        }
+    }
+
+    function load_source(){
+        _data_source = "";
+        $.each(TESTS, function(key, test){
+            if (test["id"] == exam_id ){
+                _data_source = '../' + _source + "/" + test["source"];
+                return true;
+            }
+        });
+        if (_data_source){
+            require(_data_source, function () {
+                init();
+            });
         }
     }
 
@@ -221,7 +252,7 @@ $(function () {
         $("#quiz-canvas").show();
         current_quiz = 0;        
         load_quiz(current_quiz, true, current_answers[current_quiz]);
-    });
+    });   
 
     $("#btn-proceed").on("click", function(e){
 
