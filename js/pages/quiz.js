@@ -196,14 +196,14 @@ $(function () {
     function init() {
         $.each(DATA, function(key, quiz){
     
-            if (quiz["id"] == exam_id) {
-                questions = quiz["questions"];
+            //if (quiz["id"] == exam_id) {
+            questions = quiz["questions"];
 
-                questions.sort(() => Math.random() - 0.5);
+            questions.sort(() => Math.random() - 0.5);
                 
-                $("#title").text("E" +  format4d(exam_id) + " : " +  quiz["name"]);
-                $("#description").text(quiz["description"]);
-            }
+            $("#title").text("E" +  format4d(exam_id) + " : " +  quiz["name"]);
+            $("#description").text(quiz["description"]);
+            //}
         });
     
         if (questions.length < 0) {
