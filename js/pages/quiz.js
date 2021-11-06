@@ -13,6 +13,7 @@ $(function () {
     var questions = [];
     var current_answers = [];
     var show_answer_mode = false;
+    var quiz_group = "";
 
     var qparams = new URLSearchParams(window.location.search);
 
@@ -38,6 +39,7 @@ $(function () {
     $.each(EXAMS, function(k,v){
         if (v["id"] == test_id){
             _source = v["source"];
+            quiz_group = v["group"] ? v["group"] : "";
             return true;
         }
     });
@@ -167,6 +169,8 @@ $(function () {
         $("#btn-exit").hide();
         $("#btn-next").hide();
         $("#next-back").show();
+
+        check_read_bookmark();
     }
 
     function set_user_ans(id, uid){
@@ -218,6 +222,14 @@ $(function () {
         load_quiz(current_quiz, false);
     }
 
+    function check_read_bookmark(){
+        if (check_bookmark(quiz_group, exam_id)){
+            $("#btn-mark").hide();
+        }else{
+            $("#btn-mark").show();
+        }        
+    }
+
     $(document).on("click", "input.opt-ans" , function(e) {
         _selected_id = $(this).data("id");
 
@@ -250,6 +262,7 @@ $(function () {
         $("#quiz-result").hide();
         $("#btn-exit").hide();
         $("#quiz-canvas").show();
+        
         current_quiz = 0;        
         load_quiz(current_quiz, true, current_answers[current_quiz]);
     });   
@@ -283,6 +296,16 @@ $(function () {
                 current_quiz = 0;
             }
         }
+    });
+
+    $("#btn-mark").on("click", function(e){
+        
+        if (set_bookmark(quiz_group, exam_id )) {
+            $(this).text("Marked as done.").attr("disabled", true).removeClass("btn-warning").addClass("btn-outline-warning");
+        }else{
+            alert("Sorry, some problem happened and cannot mark as read.");
+        }
+        
     });
 
 });

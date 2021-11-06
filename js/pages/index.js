@@ -5,6 +5,7 @@ $(function () {
 
   var _selected_test = -1;
   var _selected_id = -1;
+  var _exam_group = "";
 
   var qparams = new URLSearchParams(window.location.search);
 
@@ -56,6 +57,8 @@ $(function () {
     }
     _selected_test = $(this).data("id");
     const _source = $(this).data("source");
+    _exam_group = $(this).data("group");
+
     if (_source && _source !== ""){
       const _data_source = _source + "/source.js";
       require(_data_source, function () {
@@ -80,7 +83,8 @@ $(function () {
 
     const opt_icon = '<span class="material-icons-outlined">@@icon@@</span>';
     const default_icon = "emoji_events";
-    const opt_tests = '<a href="#" data-id="@@id@@" data-source="@@source@@" @@active@@ class="opt-test @@active@@"><div class="info-box">'
+    const opt_tests = '<a href="#" data-id="@@id@@" data-source="@@source@@" data-group="@@group@@" @@active@@ class="opt-test @@active@@">'
+                    + '<div class="info-box">'
                     + '<span class="info-box-icon bg-info">@@icon@@</span>'
                     + '<div class="info-box-content">'
                     + '<span class="info-box-text">@@title@@</span>'
@@ -97,13 +101,15 @@ $(function () {
         const desc = value["description"] ? value["description"] : "";
         const icon = value["icon"] ? value["icon"] : default_icon;
         const active = value["active"] ? "" : "disabled";
+        const group = value["group"] ? value["group"] : "";
         
         tests.push( opt_tests.replace(/@@id@@/gi, id)
           .replace(/@@source@@/gi, source)
           .replace(/@@icon@@/gi, opt_icon.replace(/@@icon@@/gi, icon))
           .replace(/@@title@@/gi, title)
           .replace(/@@desc@@/gi, desc)
-          .replace(/@@active@@/gi, active) );
+          .replace(/@@active@@/gi, active)
+          .replace(/@@group@@/gi, group) );
         
     });
               
@@ -121,14 +127,13 @@ $(function () {
       _selected_id = -1;
 
       const opt_icon = '<span class="material-icons-outlined">emoji_events</span>';
-      const opt_test = '<a href="#" data-id="@@did@@" id="@@id@@" class="opt-quiz @@active@@"><div class="info-box">'
+      const opt_test = '<a href="#" data-id="@@did@@" id="@@id@@" class="opt-quiz @@active@@ @@bookmark@@" title="@@tip@@" ><div class="info-box">'
                                     + '<span class="info-box-icon @@priority@@">' + opt_icon + '</span>'
                                     + '<div class="info-box-content">'
                                     + '<span class="info-box-text">@@name@@</span>'
                                     + '<span class="info-box-number">@@desc@@</span>'
                                     + '</div>'
                                     + '</div></a>';
-
       var quiz = [];
 
       $.each(TESTS, function(key,value){
@@ -140,15 +145,29 @@ $(function () {
 
       var priority = "bg-info";
       if (value["priority"] == "h"){
-        priority = "bg-warning";
+        priority = "bg-orange";
       }
+
+      let opt_bookmark = "";
+      let opt_tip = "";
+      if (check_bookmark(_exam_group, did)){
+        opt_bookmark = 'marked-bookmark';
+        priority = "bg-success";
+        opt_tip = "You marked this test has been done.";
+      }
+
+      
+
+      
 
       quiz.push( opt_test.replace(/@@did@@/gi, did)
               .replace(/@@id@@/gi, id)
               .replace(/@@name@@/gi, name)
               .replace(/@@desc@@/gi, desc)
               .replace(/@@priority@@/gi, priority)
-              .replace(/@@active@@/gi, active ? "" : "disabled" ) );
+              .replace(/@@active@@/gi, active ? "" : "disabled" )
+              .replace(/@@bookmark@@/gi, opt_bookmark)
+              .replace(/@@tip@@/gi, opt_tip) );
       });
 
       $("#exams").append(quiz);

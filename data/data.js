@@ -8,7 +8,8 @@ EXAMS.push({
     "description": "Sample practical tests for PMP exam.",
     "icon": "school",
     "source": "data/pmp",
-    "active": true
+    "active": true,
+    "group": "pmp"
 });
 
 EXAMS.push({
@@ -17,5 +18,6 @@ EXAMS.push({
     "description": "Sample test questions for Myanmar RTAD exam.",
     "icon": "assistant_direction",
     "source": "data/rta",
-    "active": true
+    "active": true,
+    "group": "rta"
 });

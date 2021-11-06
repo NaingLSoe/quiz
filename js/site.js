@@ -56,3 +56,55 @@ function format4d(n){
   return n.toString();
 
 }
+
+function get_bookmarks(){
+  /* 
+    _bookmarks = [{
+      group: pmp,
+      id : 1
+    }] 
+  */
+  let _bookmarks = [];
+  
+  if(localStorage.getItem("bookmarks")){
+    const temp = localStorage.getItem("bookmarks");
+    if (temp && temp !== ""){
+      _bookmarks = JSON.parse(temp);
+    }
+  }
+
+  return _bookmarks;
+
+}
+
+function set_bookmark(g, id){
+  try{
+
+    if (check_bookmark(g, id) == false){
+      let _bookmarks = get_bookmarks();
+      _bookmarks.push({"group": g, "id": id});
+      localStorage.setItem("bookmarks", JSON.stringify(_bookmarks));
+    }
+
+    return true;
+  }catch (ex){
+    console.error(ex);
+  }
+
+  return false;
+}
+
+function check_bookmark(g, id){
+  let _bookmarks = get_bookmarks();
+
+  if (_bookmarks && _bookmarks.length > 0){
+    for(i = 0; i < _bookmarks.length; i++){
+      const mark = _bookmarks[i];
+      if (mark["group"] == g && mark["id"] == id){
+        return true;
+      }
+    }
+  }
+  return false;
+
+}

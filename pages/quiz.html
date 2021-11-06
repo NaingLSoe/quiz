@@ -54,72 +54,83 @@
                 <small id="description">Description</small>
             </div>
         </div>
-        
-        <div class="card quiz-canvas" id = "quiz-canvas">
-            <div class="card-header">
-              <label id="quiz-no">Question </label> &nbsp;&nbsp; <span id="status" class="badge"></span>
 
-              <button type="button" class="btn btn-sm btn-danger float-end exit-quiz" id="btn-exit" data-bs-toggle="modal" data-bs-target="#exitModal">
-                  End
-              </button>
+        <!-- Quiz -->
+        <div class="" id = "quiz-canvas">
 
-            </div>
-            <div class="card-body">
-
-                <div class="alert alert-danger" role="alert" id="alert" style="display: none;">
-                    Please select an answer.
+            <div class="pb-3">
+                <div class="d-flex flex-row-reverse bd-highlight gap-2">
+                    <button type="button" class="btn btn-sm btn-danger float-end exit-quiz" id="btn-exit" data-bs-toggle="modal" data-bs-target="#exitModal">
+                        End
+                    </button>
                 </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="quiz-desc" id="question"></div>
-                    </div>
-                </div>
-
-                <div class="row" id="extra-items" style="display: none;">
-                    <div class="col">
-                        <div class="quiz-items" id="extra-items-canvas"></div>
-                    </div>
-                </div>                
-
-                <div class="row">
-                    <div class="col">
-                        <div class="answer-options" id="answers"></div>
-                    </div>
-                </div>
-
-                <div class="row" id="reason">
-                    <div class="col">
-                        <div class="bd-callout bd-callout-info">
-                            <b class="" >Explanation:</b><br/>
-                            <small class="" id="reason-text"></small>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
-            <div class="card-footer">
-                <div class="row" id="next" >
-                    <div class="col">
-                        <div class="d-grid gap-2 col-2 mx-auto">
-                            <button id="btn-next" class="btn btn-primary" type="button" disabled>Next</button>
+            <div class="card quiz-canvas">
+                <div class="card-header">
+                  <label id="quiz-no">Question </label> &nbsp;&nbsp; <span id="status" class="badge"></span>
+    
+                </div>
+                <div class="card-body">
+    
+                    <div class="alert alert-danger" role="alert" id="alert" style="display: none;">
+                        Please select an answer.
+                    </div>
+    
+                    <div class="row">
+                        <div class="col">
+                            <div class="quiz-desc" id="question"></div>
+                        </div>
+                    </div>
+    
+                    <div class="row" id="extra-items" style="display: none;">
+                        <div class="col">
+                            <div class="quiz-items" id="extra-items-canvas"></div>
+                        </div>
+                    </div>                
+    
+                    <div class="row">
+                        <div class="col">
+                            <div class="answer-options" id="answers"></div>
+                        </div>
+                    </div>
+    
+                    <div class="row" id="reason">
+                        <div class="col">
+                            <div class="bd-callout bd-callout-info">
+                                <b class="" >Explanation:</b><br/>
+                                <small class="" id="reason-text"></small>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="card-footer">
+                    <div class="row" id="next" >
+                        <div class="col">
+                            <div class="d-grid gap-2 col-2 mx-auto">
+                                <button id="btn-next" class="btn btn-primary" type="button" disabled>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="next-back" style="display: none;"  >
+                        <div class="col">
+                            <div class="d-flex justify-content-center">
+                                <button id="btn-ans-back" class="btn btn-primary ans-back-next" type="button">Back</button>
+                                <span class="p-1"></span>
+                                <button id="btn-ans-next" class="btn btn-primary ans-back-next" type="button">Next</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" id="next-back" style="display: none;"  >
-                    <div class="col">
-                        <div class="d-flex justify-content-center">
-                            <button id="btn-ans-back" class="btn btn-primary ans-back-next" type="button">Back</button>
-                            <span class="p-1"></span>
-                            <button id="btn-ans-next" class="btn btn-primary ans-back-next" type="button">Next</button>
-                        </div>
-                    </div>
-                </div>
+    
             </div>
 
         </div>
+        <!-- Quiz -->
 
+        <!-- Result -->
         <div class="card quiz-result" id="quiz-result" style="display: none;">
             <div class="card-header">
                 Your score ..
@@ -132,35 +143,41 @@
                     <div class="col">
                         <div class="d-grid gap-2 col-lg-4 col-md-6 mx-auto">
                             <button id="btn-view" class="btn btn-success">View Answers and Explanation</button>
+                            <button type="button" class="btn btn-warning" id="btn-mark" style="display: none;" >
+                                Mark As Done
+                            </button>
                         </div>
                     </div>                
+                 </div>
+            </div>
+        <!-- Result -->
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exitModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exitModalLabel">End Test ?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to end the test ?
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn-proceed">Yes, proceed</button>
+                </div>
+            </div>
             </div>
         </div>
 
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exitModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exitModalLabel">End Test ?</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to end the test ?
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="btn-proceed">Yes, proceed</button>
-            </div>
-        </div>
-        </div>
     </div>
 
     <footer class="footer mt-auto">
         <div class="p-3">
         </div>
-      </footer>
+    </footer>
 
     <script src="../js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/lib/jquery/dist/jquery.min.js"></script>

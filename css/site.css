@@ -344,3 +344,13 @@ a.opt-test.disabled .info-box-icon,
 a.opt-quiz.disabled .info-box-icon {
     background-color: #CCCCCC !important;
 }
+
+.opt-quiz.marked-bookmark .info-box {
+    background-color: #e8f3ee;
+}
+
+
+.opt-quiz .info-box .bg-orange{
+    background-color: #fd7e14 !important;
+    opacity:  1;
+}

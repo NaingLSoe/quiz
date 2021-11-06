@@ -20,7 +20,7 @@ TESTS.push({
     "id": 3,
     "name": "PMP Sample Questions",
     "description" : "10 questions",
-    "source":"quiz-3.js",
+    "source":"samples/quiz-3.js",
     "priority": "l"
 });
 
@@ -127,6 +127,21 @@ TESTS.push({
     "name": "Practic Exam : Closing Domain",
     "description" : "28 questions",
     "source":"practical/closedom.js",
-    "priority": "h",
-    "active": false
+    "priority": "h"
+});
+
+TESTS.push({
+    "id": 47,
+    "name": "PMI Code of Ethics and Professional Conduct",
+    "description" : "25 questions",
+    "source":"practical/pmi-code.js",
+    "priority": "l"
+});
+
+TESTS.push({
+    "id": 50,
+    "name": "Agile : Concept",
+    "description" : "20 questions",
+    "source":"agile/concept.js",
+    "priority": "h"
 });
