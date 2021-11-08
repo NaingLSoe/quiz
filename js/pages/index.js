@@ -56,13 +56,14 @@ $(function () {
       return;
     }
     _selected_test = $(this).data("id");
-    const _source = $(this).data("source");
     _exam_group = $(this).data("group");
+    const _source = $(this).data("source");
+    const _icon = $(this).data("icon");
 
     if (_source && _source !== ""){
       const _data_source = _source + "/source.js";
       require(_data_source, function () {
-        render_quiz();
+        render_quiz(_icon);
       });
     }
   });
@@ -81,11 +82,10 @@ $(function () {
     $("#test-items").empty();
     $(".main-box").hide();
 
-    const opt_icon = '<span class="material-icons-outlined">@@icon@@</span>';
     const default_icon = "emoji_events";
-    const opt_tests = '<a href="#" data-id="@@id@@" data-source="@@source@@" data-group="@@group@@" @@active@@ class="opt-test @@active@@">'
+    const opt_tests = '<a href="#" data-id="@@id@@" data-source="@@source@@" data-group="@@group@@" data-icon="@@icon@@" @@active@@ class="opt-test @@active@@">'
                     + '<div class="info-box">'
-                    + '<span class="info-box-icon bg-info">@@icon@@</span>'
+                    + '<span class="info-box-icon bg-info"><span class="material-icons">@@icon@@</span></span>'
                     + '<div class="info-box-content">'
                     + '<span class="info-box-text">@@title@@</span>'
                     + '<span class="info-box-number">@@desc@@</span>'
@@ -105,7 +105,7 @@ $(function () {
         
         tests.push( opt_tests.replace(/@@id@@/gi, id)
           .replace(/@@source@@/gi, source)
-          .replace(/@@icon@@/gi, opt_icon.replace(/@@icon@@/gi, icon))
+          .replace(/@@icon@@/gi,  icon)
           .replace(/@@title@@/gi, title)
           .replace(/@@desc@@/gi, desc)
           .replace(/@@active@@/gi, active)
@@ -118,25 +118,26 @@ $(function () {
 
   }
 
-  function render_quiz(){
+  function render_quiz(_icon){
 
-      $("#exams").empty();
-      $("#test-items").empty();
-      $(".main-box").hide();
+    $("#exams").empty();
+    $("#test-items").empty();
+    $(".main-box").hide();
 
-      _selected_id = -1;
+    _selected_id = -1;
 
-      const opt_icon = '<span class="material-icons-outlined">emoji_events</span>';
-      const opt_test = '<a href="#" data-id="@@did@@" id="@@id@@" class="opt-quiz @@active@@ @@bookmark@@" title="@@tip@@" ><div class="info-box">'
-                                    + '<span class="info-box-icon @@priority@@">' + opt_icon + '</span>'
-                                    + '<div class="info-box-content">'
-                                    + '<span class="info-box-text">@@name@@</span>'
-                                    + '<span class="info-box-number">@@desc@@</span>'
-                                    + '</div>'
-                                    + '</div></a>';
-      var quiz = [];
+    const opt_test = '<a href="#" data-id="@@did@@" id="@@id@@" class="opt-quiz @@active@@" >'
+                        +'<div class="info-box @@bookmark@@">'
+                        + '<span class="info-box-icon @@priority@@ "> @@icon@@ </span>'
+                        + '<div class="info-box-content">'
+                        + '<span class="info-box-text">@@name@@ @@tip@@ </span>'
+                        + '<span class="info-box-number">@@desc@@</span>'
+                        + '</div>'
+                        + '</div></a>';
+    var quiz = [];
 
-      $.each(TESTS, function(key,value){
+    $.each(TESTS, function(key,value){
+      let opt_icon = '<span class="material-icons">@@icon@@</span>';      
       var did = value["id"];
       var id = "quiz-" + did;
       var name = "E" +  format4d(did) + " : " +  value["name"];
@@ -151,14 +152,13 @@ $(function () {
       let opt_bookmark = "";
       let opt_tip = "";
       if (check_bookmark(_exam_group, did)){
-        opt_bookmark = 'marked-bookmark';
-        priority = "bg-success";
-        opt_tip = "You marked this test has been done.";
+        priority = "bg-done"
+        opt_bookmark = 'bg-done marked';
+        opt_icon = opt_icon.replace(/@@icon@@/gi, 'emoji_events');
+        opt_tip = "<label class='badge bg-success' title='You marked this test as done.'>done</label>";
+      }else{
+        opt_icon = opt_icon.replace(/@@icon@@/gi, _icon !== "" ? _icon : "book");
       }
-
-      
-
-      
 
       quiz.push( opt_test.replace(/@@did@@/gi, did)
               .replace(/@@id@@/gi, id)
@@ -167,7 +167,8 @@ $(function () {
               .replace(/@@priority@@/gi, priority)
               .replace(/@@active@@/gi, active ? "" : "disabled" )
               .replace(/@@bookmark@@/gi, opt_bookmark)
-              .replace(/@@tip@@/gi, opt_tip) );
+              .replace(/@@tip@@/gi, opt_tip)
+              .replace(/@@icon@@/gi, opt_icon));
       });
 
       $("#exams").append(quiz);

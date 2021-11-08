@@ -59,10 +59,13 @@
         <div class="" id = "quiz-canvas">
 
             <div class="pb-3">
-                <div class="d-flex flex-row-reverse bd-highlight gap-2">
-                    <button type="button" class="btn btn-sm btn-danger float-end exit-quiz" id="btn-exit" data-bs-toggle="modal" data-bs-target="#exitModal">
-                        End
-                    </button>
+                <div class="d-flex bd-highlight gap-2">
+                    <div class="quiz-timer" id="quiz-timer" style="display: none;">
+                        00:00
+                    </div>
+                    <div class="ms-auto">
+                        <button type="button" class="btn btn-sm btn-danger exit-quiz" id="btn-exit" data-bs-toggle="modal" data-bs-target="#exitModal">End</button>
+                    </div> 
                 </div>
             </div>
 
@@ -176,6 +179,11 @@
 
     <footer class="footer mt-auto">
         <div class="p-3">
+            <div class="row">
+                <div class="col">
+                    <small class="text-danger"> Do not refresh or reload the page. </small>
+                </div>
+            </div>
         </div>
     </footer>
 

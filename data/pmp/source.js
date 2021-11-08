@@ -5,7 +5,8 @@ TESTS.push({
     "name": "PMP Sample Questions",
     "description" : "10 questions",
     "source":"samples/quiz-1.js",
-    "priority": "l"
+    "priority": "l",
+    "time": 15
 });
 
 TESTS.push({
@@ -13,7 +14,8 @@ TESTS.push({
     "name": "PMP Sample Questions",
     "description" : "10 questions",
     "source":"samples/quiz-2.js",
-    "priority": "l"
+    "priority": "l",
+    "time": 15
 });
 
 TESTS.push({
@@ -21,7 +23,8 @@ TESTS.push({
     "name": "PMP Sample Questions",
     "description" : "10 questions",
     "source":"samples/quiz-3.js",
-    "priority": "l"
+    "priority": "l",
+    "time": 15
 });
 
 TESTS.push({
@@ -29,7 +32,8 @@ TESTS.push({
     "name": "Project Resource Management",
     "description" : "10 questions",
     "source":"samples/quiz-11.js",
-    "priority": "h"
+    "priority": "h",
+    "time": 15
 });
 
 TESTS.push({
@@ -37,7 +41,8 @@ TESTS.push({
     "name": "Project Resource Management",
     "description" : "10 questions",
     "source":"samples/quiz-12.js",
-    "priority": "h"
+    "priority": "h",
+    "time": 15
 });
 
 TESTS.push({
@@ -45,7 +50,8 @@ TESTS.push({
     "name": "PMP PMBOK 6 - Sample Quiz 1",
     "description" : "20 questions",
     "source":"pmbok-6/pmp-pmbok6-1.js",
-    "priority": "l"
+    "priority": "l",
+    "time": 25
 });
 
 TESTS.push({
@@ -53,7 +59,8 @@ TESTS.push({
     "name": "PMP PMBOK 6 - Sample Quiz 2",
     "description" : "20 questions",
     "source":"pmbok-6/pmp-pmbok6-2.js",
-    "priority": "l"
+    "priority": "l",
+    "time": 25
 });
 
 TESTS.push({
@@ -143,5 +150,6 @@ TESTS.push({
     "name": "Agile : Concept",
     "description" : "20 questions",
     "source":"agile/concept.js",
-    "priority": "h"
+    "priority": "h",
+    "time": 35
 });

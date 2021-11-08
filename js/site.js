@@ -57,6 +57,14 @@ function format4d(n){
 
 }
 
+function format2d(n){
+  if (n < 10){
+    return "0" + n.toString();
+  }
+  return n.toString();
+}
+
+
 function get_bookmarks(){
   /* 
     _bookmarks = [{

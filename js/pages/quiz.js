@@ -14,6 +14,9 @@ $(function () {
     var current_answers = [];
     var show_answer_mode = false;
     var quiz_group = "";
+    var current_test = null;
+    var test_timer = 0;
+    let XsT;
 
     var qparams = new URLSearchParams(window.location.search);
 
@@ -45,7 +48,6 @@ $(function () {
     });
 
     if (_source == ""){
-        alert(EXAMS);
         window.location.href = "../index.html?e=400";
     }
 
@@ -151,6 +153,11 @@ $(function () {
   
     function show_result(){
 
+        if (test_timer > 0){
+            clearInterval(XsT);
+            $("#quiz-timer").text("").hide();
+        }
+
         current_quiz = 0;
 
         const _total = questions.length;
@@ -184,12 +191,25 @@ $(function () {
 
     function load_source(){
         _data_source = "";
-        $.each(TESTS, function(key, test){
-            if (test["id"] == exam_id ){
-                _data_source = '../' + _source + "/" + test["source"];
-                return true;
+
+        if (TESTS){
+            let xxx = 0;
+            for(i = 0; i < TESTS.length; i ++){
+                const test = TESTS[i];
+                xxx = i;
+                if (test["id"] == exam_id ){
+                    _data_source = '../' + _source + "/" + test["source"];
+                    if (test["time"]){ 
+                        if (isNaN(test["time"]) == false){
+                            test_timer = test["time"];
+                        }            
+                    }
+                    break;
+                }
             }
-        });
+            console.log("looped : " + xxx.toString());
+        }
+
         if (_data_source){
             require(_data_source, function () {
                 init();
@@ -198,17 +218,24 @@ $(function () {
     }
 
     function init() {
+
         $.each(DATA, function(key, quiz){
     
-            //if (quiz["id"] == exam_id) {
-            questions = quiz["questions"];
-
-            questions.sort(() => Math.random() - 0.5);
-                
-            $("#title").text("E" +  format4d(exam_id) + " : " +  quiz["name"]);
-            $("#description").text(quiz["description"]);
+            //if (quiz["id"] == exam_id) {            
+            current_test = quiz;
+            return true;
             //}
         });
+
+        if (!(current_test)){
+            window.location.href = "../index.html?e=404";
+        }
+
+        questions = current_test["questions"];
+        questions.sort(() => Math.random() - 0.5);
+                
+        $("#title").text("E" +  format4d(exam_id) + " : " +  current_test["name"]);
+        $("#description").text(current_test["description"]);
     
         if (questions.length < 0) {
             window.location.href = "index.html?e=404";
@@ -218,8 +245,43 @@ $(function () {
         $.each(questions, function(k,v){
             current_answers.push({"id": v["id"], "ans": 0, "correct": 0 });
         });
+
+        if (test_timer > 0){
+            start_timer(test_timer);
+        }
     
         load_quiz(current_quiz, false);
+    }
+
+    function start_timer(T){
+        $("#quiz-timer").text("00:00:00").show();
+        let cxM = "m";
+        if (test_timer > 60) {cxM = "h"; }
+        const cxT = (new Date(2000,1,1,0,0,0).getTime()) + (T * 60000);
+        let vxT = (new Date(2000,1,1,0,0,0).getTime());
+        XsT = setInterval(function() {
+            vxT = vxT + 1000;
+            let distance = cxT - vxT;
+            var dhours = 0;
+            var dminutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var dseconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (cxM == "h"){
+                dhours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            }
+            $("#quiz-timer").text(format2d(dhours) + ":" + format2d(dminutes) + ":" + format2d(dseconds)).show();
+    
+            if(distance < 30001){
+                if ($("#quiz-timer").hasClass("active")) {
+                    $("#quiz-timer").removeClass("active");
+                }else{
+                    $("#quiz-timer").addClass("active");
+                }
+            }
+
+            if (distance < 0){
+                show_result();
+            }
+        }, 1000);        
     }
 
     function check_read_bookmark(){

@@ -29,7 +29,8 @@ body, input, p, h, label, span, div {
 .quiz-result .card-header,
 .user-result,
 .help .help-box .card-header,
-.help .accordion-button {
+.help .accordion-button, 
+.quiz-timer {
     font-family: 'Saira Condensed',  "Helvetica Neue", Arial, sans-serif; 
     color: #04648a;
 }
@@ -227,11 +228,12 @@ button.exit-quiz, button.ans-back-next {
     box-shadow: none;
 }
 
-
+.help .btn .material-icons,
 .help .btn .material-icons-outlined {
     font-size: .875rem;
 }
 
+.exam-options .form-check .material-icons, 
 .exam-options .form-check .material-icons-outlined {
     font-size: 1em;    
 }
@@ -314,19 +316,16 @@ button.exit-quiz, button.ans-back-next {
     background-color: #e6f0f3 ;
 }
 
-.exam-options .info-box .info-box-icon .material-icons-outlined {
-    color: #FFFFFF;
-}
-
+.exam-options .info-box .info-box-icon .material-icons, 
+.exam-options .info-box .info-box-icon .material-icons-outlined,
+.exam-options .opt-quiz .info-box .info-box-icon .material-icons,
+.exam-options .opt-test .info-box .info-box-icon .material-icons, 
 .exam-options .opt-quiz .info-box .info-box-icon .material-icons-outlined,
 .exam-options .opt-test .info-box .info-box-icon .material-icons-outlined {
     color: #FFFFFF;
     font-size: 1.875rem;
 }
 
-.bg-high-priority {
-    background-color: #ffecb5;
-}
 
 a.opt-test.disabled  .info-box-text, 
 a.opt-test.disabled:hover,
@@ -342,15 +341,36 @@ a.opt-quiz.disabled .info-box-number {
 }
 a.opt-test.disabled .info-box-icon,
 a.opt-quiz.disabled .info-box-icon {
-    background-color: #CCCCCC !important;
+    background-color: rgba(210, 214, 222, 1) !important;
 }
-
-.opt-quiz.marked-bookmark .info-box {
-    background-color: #e8f3ee;
-}
-
 
 .opt-quiz .info-box .bg-orange{
     background-color: #fd7e14 !important;
     opacity:  1;
+}
+
+.quiz-timer {
+    color: #28a745;
+    font-size: 1.25em;
+}
+
+.quiz-timer.active {
+    color: #dc3545;
+}
+
+.exam-options a.opt-quiz .bg-done {
+    background-color: rgba(0,0,0,.03) !important;
+}
+
+.exam-options a.opt-quiz .info-box.marked{
+    opacity: 0.7;
+}
+
+.exam-options a.opt-quiz .info-box.marked .info-box-icon {
+    background-color: rgba(210, 214, 222, 1) !important;
+}
+
+.exam-options a.opt-quiz .info-box.marked .material-icons,
+.exam-options a.opt-quiz .info-box.marked .material-icons-outlined{
+    color: #022837;
 }
